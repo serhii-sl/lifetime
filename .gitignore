@@ -1,0 +1,14 @@
+# dependencies
+front/node_modules
+api/node_modules
+.idea
+
+# production
+front/build
+
+# misc
+.DS_Store
+
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
