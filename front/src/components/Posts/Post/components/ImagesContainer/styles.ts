@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{isTwoImages?: boolean; isMoreTwoImages?: boolean}>`
   display: grid;
   grid-gap: 8px;
   grid-auto-flow: dense;
