@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const FieldWrapper = styled.div`
-  width: 320px;
-  height: 48px;
+  width: 100%;
   display: flex;
-  padding: 8px 12px;
+  padding: 12px 24px;
+  margin-bottom: 16px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;

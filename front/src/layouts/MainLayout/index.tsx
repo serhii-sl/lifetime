@@ -4,13 +4,9 @@ import Header from './Header';
 import Container from './Container';
 import Footer from './Footer';
 
-interface IMainLayoutProps {
-  isHomePage?: boolean;
-}
-
-const MainLayout: React.FC<IMainLayoutProps> = ({ children, isHomePage }) => (
+const MainLayout: React.FC = ({ children }) => (
   <>
-    <Header isHomePage={isHomePage} />
+    <Header />
     <Container>{children}</Container>
     <Footer />
   </>

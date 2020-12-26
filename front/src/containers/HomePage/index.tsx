@@ -2,11 +2,11 @@ import * as React from 'react';
 // layouts
 import MainLayout from '../../layouts/MainLayout';
 // components
-import Posts from '../../components/Posts';
+import NavigationTabs from '../../layouts/MainLayout/Header/components/NavigationTabs';
 
 const HomePageContainer = () => (
-  <MainLayout isHomePage>
-    <Posts />
+  <MainLayout>
+  <NavigationTabs/>
   </MainLayout>
 );
 
