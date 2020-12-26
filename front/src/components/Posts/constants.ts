@@ -19,5 +19,45 @@ export const POSTS_MOCK: IPost[] = [
     text: 'Having fun while cooking and eating variety of foods',
     createdDate: 'June 21, 12:45 pm',
     images: ['static/images/1.png', 'static/images/2.png', 'static/images/3.png']
+  },
+  {
+    postId: 1,
+    owner: {
+      fullName: 'Miranda Shaffer',
+      avatarSrc: 'static/images/user_mock1.png'
+    },
+    text: 'Having fun while cooking and eating variety of foods',
+    createdDate: 'June 21, 12:45 pm',
+    images: ['static/images/1.png', 'static/images/2.png', 'static/images/3.png']
+  },
+  {
+    postId: 2,
+    owner: {
+      fullName: 'Miranda Shaffer',
+      avatarSrc: 'static/images/user_mock1.png'
+    },
+    text: 'Having fun while cooking and eating variety of foods',
+    createdDate: 'June 21, 12:45 pm',
+    images: ['static/images/1.png', 'static/images/2.png', 'static/images/3.png']
+  },
+  {
+    postId: 3,
+    owner: {
+      fullName: 'Miranda Shaffer',
+      avatarSrc: 'static/images/user_mock1.png'
+    },
+    text: 'Having fun while cooking and eating variety of foods',
+    createdDate: 'June 21, 12:45 pm',
+    images: ['static/images/1.png', 'static/images/2.png', 'static/images/3.png']
+  },
+  {
+    postId: 4,
+    owner: {
+      fullName: 'Miranda Shaffer',
+      avatarSrc: 'static/images/user_mock1.png'
+    },
+    text: 'Having fun while cooking and eating variety of foods',
+    createdDate: 'June 21, 12:45 pm',
+    images: ['static/images/1.png', 'static/images/2.png', 'static/images/3.png']
   }
 ];

@@ -1,17 +1,20 @@
 import * as React from 'react';
 // containers
-import HomePageContainer from './containers/HomePage';
+import MainPageContainer from './containers/MainPage';
 // providers
 import { ThemeProvider } from 'styled-components';
 // local
 import { theme } from './styles/theme';
 // global css
 import 'normalize.css/normalize.css';
+import NavigationTabsContainer from './context/NavigationTabs';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <HomePageContainer />
+      <NavigationTabsContainer>
+        <MainPageContainer />
+      </NavigationTabsContainer>
     </ThemeProvider>
   );
 };

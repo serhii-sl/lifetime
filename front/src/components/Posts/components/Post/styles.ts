@@ -7,6 +7,7 @@ export const PostWrapper = styled.div`
   border: 2px solid ${({ theme }) =>  theme.colors.gray200};
   border-radius: 8px;
   padding: 20px 32px;
+  margin-bottom: 24px;
 `
 
 export const Header = styled.div`

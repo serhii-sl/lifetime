@@ -1,20 +1,26 @@
 import * as React from 'react';
 // constants
 import { TABS } from './constants';
-// components
-import Posts from '../../../../../components/Posts';
-import Tabs from './components/Tabs';
+// styles
+import { NavigationTabsWrapper, Tab } from './styles';
+// context
+import { NavigationTabsContext } from '../../../../../context/NavigationTabs';
 
 const NavigationTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = React.useState(TABS.HOME);
+  const { activeTab, setActiveTab } = React.useContext(NavigationTabsContext);
 
   return (
-    <>
-      <Tabs setActiveTab={setActiveTab} activeTab={activeTab} />
-      {activeTab === TABS.HOME && <Posts />}
-      {activeTab === TABS.FRIENDS && <div>FRIENDS</div>}
-      {activeTab === TABS.MESSENGER && <div>MESSENGER</div>}
-    </>
+    <NavigationTabsWrapper>
+      <Tab onClick={() => setActiveTab(TABS.HOME)} isActive={activeTab === TABS.HOME}>
+        HOME
+      </Tab>
+      <Tab onClick={() => setActiveTab(TABS.FRIENDS)} isActive={activeTab === TABS.FRIENDS}>
+        FRIENDS
+      </Tab>
+      <Tab onClick={() => setActiveTab(TABS.MESSENGER)} isActive={activeTab === TABS.MESSENGER}>
+        MESSENGER
+      </Tab>
+    </NavigationTabsWrapper>
   );
 };
 
