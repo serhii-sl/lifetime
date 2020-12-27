@@ -1,6 +1,6 @@
 import * as React from 'react';
 // styles
-import { Header, Wrapper } from './styles';
+import { Header, Wrapper, ItemsContainer } from './styles';
 // components
 import AboutItem from './components/AboutItem';
 import { PROFILE_ABOUT_DATA } from './constants';
@@ -9,6 +9,7 @@ const About: React.FC = () => {
   return (
     <Wrapper>
       <Header>About</Header>
+      <ItemsContainer>
       {PROFILE_ABOUT_DATA.map(({ headerText, imageSrc, description, placeholder, link, linkText }, index) => (
         <AboutItem
           headerText={headerText}
@@ -20,6 +21,7 @@ const About: React.FC = () => {
           key={index}
         />
       ))}
+      </ItemsContainer>
     </Wrapper>
   );
 };

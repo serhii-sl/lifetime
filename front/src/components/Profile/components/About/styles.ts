@@ -15,3 +15,9 @@ export const Header = styled.div`
   padding: 16px 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.blue100};
 `
+
+export const ItemsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`

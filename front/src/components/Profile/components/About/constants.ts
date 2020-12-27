@@ -8,13 +8,15 @@ export const PROFILE_ABOUT_DATA = [
     placeholder: 'Add work'
   },
   {
-    headerText: 'Lives in Sumy',
+    headerText: 'Lives in',
     description: 'Ukraine',
     imageSrc: 'static/images/avatar_mock.png',
-    placeholder: 'Add address'
+    placeholder: 'Add address',
+    linkText: 'Sumy',
+    link: '/',
   },
   {
-    headerText: '+380992434793',
+    headerText: '+380995434793',
     placeholder: 'Add phone',
     imageSrc: 'static/images/avatar_mock.png',
   },
@@ -31,5 +33,11 @@ export const PROFILE_ABOUT_DATA = [
     description: 'Graduated in 2019',
     imageSrc: 'static/images/avatar_mock.png',
     placeholder: 'Add study'
+  },
+  {
+    linkText: 'https://www.instagram.com/slavita_sergey/',
+    link: 'https://www.instagram.com/slavita_sergey/',
+    imageSrc: 'static/images/avatar_mock.png',
+    placeholder: 'Add contact'
   }
 ];

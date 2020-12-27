@@ -1,9 +1,9 @@
 import * as React from 'react';
 // styles
-import { Image, Wrapper, HeaderText, Description, Link, Placeholder } from './styles';
+import { Image, Wrapper, TextWrapper, HeaderText, Description, Link, Placeholder, ContentWrapper } from './styles';
 
 interface IAboutItemProps {
-  headerText: string;
+  headerText?: string;
   description?: string;
   imageSrc?: string;
   link?: string;
@@ -14,14 +14,18 @@ interface IAboutItemProps {
 const AboutItem: React.FC<IAboutItemProps> = ({ imageSrc, headerText, description, link, linkText, placeholder }) => {
   return (
     <Wrapper>
-      {headerText ? (
-        <>
-          <Image src={imageSrc} />
-          <HeaderText>
-            {headerText} {link && <Link href={link}>{linkText}</Link>}
-          </HeaderText>
-          <Description>{description}</Description>
-        </>
+      {headerText || link ? (
+        <ContentWrapper>
+          <div>
+            <Image src={imageSrc} />
+          </div>
+          <TextWrapper>
+            <HeaderText>
+              {headerText} {link && <Link href={link}>{linkText}</Link>}
+            </HeaderText>
+            <Description>{description}</Description>
+          </TextWrapper>
+          </ContentWrapper>
       ) : (
         <>
           <Image src={imageSrc} />
