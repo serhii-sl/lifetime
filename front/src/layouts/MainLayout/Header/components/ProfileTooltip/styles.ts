@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const TooltipWrapper = styled.div`
   position: relative;
+  z-index: 999;
 
   .tooltip-content {
     visibility: hidden;

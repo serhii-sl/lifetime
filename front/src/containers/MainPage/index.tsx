@@ -6,16 +6,18 @@ import Posts from '../../components/Posts';
 // constants
 import { TABS } from '../../layouts/MainLayout/Header/components/NavigationTabs/constants';
 // context
-import { NavigationTabsContext } from '../../context/NavigationTabs';
+import { HeaderNavigationContext } from '../../context/HeaderNavigation';
+import ProfileContainer from '../../components/Profile';
 
 const MainPageContainer = () => {
-  const { activeTab } = React.useContext(NavigationTabsContext);
+  const { activeTab } = React.useContext(HeaderNavigationContext);
 
   return (
     <MainLayout>
       {activeTab === TABS.HOME && <Posts />}
       {activeTab === TABS.FRIENDS && <div>FRIENDS</div>}
       {activeTab === TABS.MESSENGER && <div>MESSENGER</div>}
+      {activeTab === TABS.PROFILE && <ProfileContainer />}
     </MainLayout>
   );
 }

@@ -4,10 +4,10 @@ import { TABS } from './constants';
 // styles
 import { NavigationTabsWrapper, Tab } from './styles';
 // context
-import { NavigationTabsContext } from '../../../../../context/NavigationTabs';
+import { HeaderNavigationContext } from '../../../../../context/HeaderNavigation';
 
 const NavigationTabs: React.FC = () => {
-  const { activeTab, setActiveTab } = React.useContext(NavigationTabsContext);
+  const { activeTab, setActiveTab } = React.useContext(HeaderNavigationContext);
 
   return (
     <NavigationTabsWrapper>

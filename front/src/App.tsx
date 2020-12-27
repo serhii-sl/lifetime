@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 // global css
 import 'normalize.css/normalize.css';
-import NavigationTabsContainer from './context/NavigationTabs';
+import NavigationTabsContainer from './context/HeaderNavigation';
 
 const App = () => {
   return (

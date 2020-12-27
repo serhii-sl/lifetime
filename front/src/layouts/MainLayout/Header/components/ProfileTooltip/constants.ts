@@ -1,19 +1,21 @@
+import { TABS } from '../NavigationTabs/constants';
+
 interface IOptionProfile {
+  label: TABS
   name: string
-  onClick: () => void
 }
 
 export const PROFILE_TOOLTIP_OPTIONS: IOptionProfile[] = [
   {
-    name: 'Profile',
-    onClick: () => {}
+    label: TABS.PROFILE,
+    name: 'Profile'
   },
   {
-    name: 'Settings',
-    onClick: () => {}
+    label: TABS.PROFILE,
+    name: 'Settings'
   },
   {
-    name: 'Sign Out',
-    onClick: () => {}
+    label: TABS.PROFILE,
+    name: 'Sign Out'
   }
 ];
