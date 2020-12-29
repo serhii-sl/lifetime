@@ -12,9 +12,16 @@ interface IAboutItemProps {
 }
 
 const AboutItem: React.FC<IAboutItemProps> = ({ imageSrc, headerText, description, link, linkText, placeholder }) => {
+  const isEmptySection = !headerText && !link;
+
   return (
     <Wrapper>
-      {headerText || link ? (
+      {isEmptySection ? (
+        <>
+          <Image src={imageSrc} />
+          <Placeholder>{placeholder}</Placeholder>
+        </>
+      ) : (
         <ContentWrapper>
           <div>
             <Image src={imageSrc} />
@@ -25,12 +32,7 @@ const AboutItem: React.FC<IAboutItemProps> = ({ imageSrc, headerText, descriptio
             </HeaderText>
             <Description>{description}</Description>
           </TextWrapper>
-          </ContentWrapper>
-      ) : (
-        <>
-          <Image src={imageSrc} />
-          <Placeholder>{placeholder}</Placeholder>
-        </>
+        </ContentWrapper>
       )}
     </Wrapper>
   );

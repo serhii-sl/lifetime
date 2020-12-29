@@ -19,9 +19,6 @@ export const Image = styled.img``;
 
 export const HeaderText = styled.div`
   margin-bottom: 12px;
-  text-overflow: ellipsis; //образка длинных блоков с текстом
-  overflow: hidden; //прятать выходящий за пределы текст
-  width: 100%; //ширина блока с текстом
   white-space: nowrap;
 `;
 

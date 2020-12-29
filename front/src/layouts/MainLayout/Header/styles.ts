@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 2px solid ${({ theme }) => theme.colors.gray200};
+  box-sizing: border-box;
 `;
 
 export const LogoIcon = styled.img`
