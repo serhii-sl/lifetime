@@ -2,7 +2,7 @@ import * as React from 'react';
 // styles
 import { Date, Header, HeaderContent, Name, PostWrapper, PostContent } from './styles';
 // components
-import Avatar from '../../../../shared/components/Avatar';
+import Avatar from '../../../shared/components/Avatar';
 import Images from './components/ImagesContainer';
 
 interface IPost {

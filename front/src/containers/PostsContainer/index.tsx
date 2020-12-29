@@ -2,12 +2,12 @@ import * as React from 'react';
 // mock
 import { POSTS_MOCK } from './constants';
 // components
-import Post from './components/Post';
-import AddNews from './components/AddNews';
+import AddNews from '../../components/Posts/AddNews';
+import Post from '../../components/Posts/Post';
 // styles
 import { PostsWrapper } from './styles';
 
-const Posts = () => (
+const PostsContainer = () => (
   <PostsWrapper>
     <AddNews />
     {POSTS_MOCK.map((post) => (
@@ -16,4 +16,4 @@ const Posts = () => (
   </PostsWrapper>
 );
 
-export default Posts;
+export default PostsContainer;

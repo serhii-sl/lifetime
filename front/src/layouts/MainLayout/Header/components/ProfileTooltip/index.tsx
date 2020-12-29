@@ -3,19 +3,19 @@ import * as React from 'react';
 import { TooltipWrapper, TooltipContent, Option } from './styles';
 // constants
 import { PROFILE_TOOLTIP_OPTIONS } from './constants';
-// context
-import { HeaderNavigationContext } from '../../../../../context/HeaderNavigation';
+// router
+import { Link } from 'react-router-dom';
 
 const ProfileTooltip: React.FC = ({ children }) => {
-  const { setActiveTab, userName } = React.useContext(HeaderNavigationContext);
-
   return (
     <TooltipWrapper>
       <TooltipContent className={'tooltip-content'}>
-        {PROFILE_TOOLTIP_OPTIONS.map(({ name, label }, index) => (
-          <Option onClick={() => setActiveTab(label)} key={index}>
-            {name}{userName}
-          </Option>
+        {PROFILE_TOOLTIP_OPTIONS.map(({ title, href }, index) => (
+          <Link to={href} key={index}>
+            <Option>
+              {title}
+            </Option>
+          </Link>
         ))}
       </TooltipContent>
       {children}

@@ -1,9 +1,6 @@
 import * as React from 'react';
 // styles
 import { Wrapper, Avatar, UserName } from './styles';
-// components
-
-// constants
 
 const HeaderProfile = () => {
   return (

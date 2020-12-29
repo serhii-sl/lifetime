@@ -1,9 +1,9 @@
 import * as React from 'react';
-// constants
-import { PROFILE_TABS } from './constants';
 // components
 import Tabs from './components/Tabs';
 import About from '../About';
+// constants
+import { PROFILE_TABS } from './constants';
 
 const ProfileTabs: React.FC = () => {
   const [profileTab, setProfileTab] = React.useState(PROFILE_TABS.ABOUT);

@@ -3,7 +3,7 @@ export const PROFILE_ABOUT_DATA = [
     headerText: 'Programmer at Cultum.io',
     description: 'Past: QA in Netcracker',
     imageSrc: 'static/images/avatar_mock.png',
-    link: 'cultum.io',
+    link: 'https://cultum.io/',
     linkText: 'Cultum.io',
     placeholder: 'Add work'
   },

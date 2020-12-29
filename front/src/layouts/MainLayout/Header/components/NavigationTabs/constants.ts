@@ -1,7 +1,11 @@
-export enum TABS {
-  HOME = 'HOME',
-  MESSENGER = 'MESSENGER',
-  FRIENDS = 'FRIENDS',
-  PROFILE = 'PROFILE',
-  SETTINGS = 'SETTINGS'
+interface ITabs {
+  title: string;
+  href: string;
 }
+
+export const TABS: ITabs[] = [
+  { title: 'HOME', href: '/home'},
+  { title: 'MESSENGER', href: '/messenger'},
+  { title: 'FRIENDS', href: '/friends'},
+]
+

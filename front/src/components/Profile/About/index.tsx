@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Header, Wrapper, ItemsContainer } from './styles';
 // components
 import AboutItem from './components/AboutItem';
+// constants
 import { PROFILE_ABOUT_DATA } from './constants';
 
 const About: React.FC = () => {

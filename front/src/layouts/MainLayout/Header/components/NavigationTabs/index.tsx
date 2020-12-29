@@ -3,23 +3,20 @@ import * as React from 'react';
 import { TABS } from './constants';
 // styles
 import { NavigationTabsWrapper, Tab } from './styles';
-// context
-import { HeaderNavigationContext } from '../../../../../context/HeaderNavigation';
+// router
+import { useLocation, Link } from 'react-router-dom';
 
 const NavigationTabs: React.FC = () => {
-  const { activeTab, setActiveTab } = React.useContext(HeaderNavigationContext);
+  // hooks
+  const location = useLocation()
 
   return (
     <NavigationTabsWrapper>
-      <Tab onClick={() => setActiveTab(TABS.HOME)} isActive={activeTab === TABS.HOME}>
-        HOME
-      </Tab>
-      <Tab onClick={() => setActiveTab(TABS.FRIENDS)} isActive={activeTab === TABS.FRIENDS}>
-        FRIENDS
-      </Tab>
-      <Tab onClick={() => setActiveTab(TABS.MESSENGER)} isActive={activeTab === TABS.MESSENGER}>
-        MESSENGER
-      </Tab>
+      {TABS.map(({ title, href }, index) => (
+          <Link to={href} key={index}>
+            <Tab isActive={location.pathname === href}>{title}</Tab>
+          </Link>
+      ))}
     </NavigationTabsWrapper>
   );
 };
