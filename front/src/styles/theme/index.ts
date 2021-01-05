@@ -7,12 +7,19 @@ export const colors = {
   blue800: '#1877f2',
   // gray
   gray100: '#bfbfbf',
+  gray150: '#c3bfd7',
+  gray180: '#c7c6cd',
   gray200: '#f1f2f6',
+  gray400: '#36383a',
   gray500: '#788292',
   // black
   black400: '#788292',
+  // purple
+  purple500: '#735cdc',
+  purple800: '#2a2a72',
 
-  white: '#fff'
+  white: '#fff',
+  red: '#ff0000'
 }
 
 export const SIZE = {

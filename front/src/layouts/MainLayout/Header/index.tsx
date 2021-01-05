@@ -2,7 +2,7 @@ import * as React from 'react';
 // styles
 import { HeaderWrapper, LogoIcon } from './styles';
 // components
-import Avatar from '../../../shared/components/Avatar';
+import Avatar from '../../../shared/Avatar';
 import ProfileTooltip from './components/ProfileTooltip';
 import NavigationTabs from './components/NavigationTabs';
 
