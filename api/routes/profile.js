@@ -1,32 +1,64 @@
-const express = require('express');
-const {v4} = require('uuid')
-const router = express.Router();
-const db = require('./db')
+const express = require('express')
+// libs
+const { v4 } = require('uuid')
+// router
+const router = express.Router()
+// db
+const db = require('../db')
 
 router.get('/profile/:id', async (req, res) => {
   try {
-    const {id} = req.params
-    const {rows} = await db('user').where('user_uuid', id)
-    res.json({items: rows})
+    const { id } = req.params
+
+    const user = await db('users').where('user_id', id)
+
+    res.json({ items: user })
   } catch (e) {
     console.error(e)
   }
-});
+})
 
 router.post('/profile', async (req, res) => {
-  const {first_name, last_name, phone, email, university, password, birthday, avatar, status} = req.body
-  await db('user').insert(v4(), first_name, last_name, phone, email, university, password, birthday, avatar, status)
-  res.json(
-    {message: "Profile was created successfully"}
-  )
-});
+  try {
+    const params = req.body
+
+    await db('users').insert({ user_id: v4(), ...params })
+
+    res.json(
+      { message: 'Profile was created successfully' }
+    )
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+router.put('/profile/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { field, newValue } = req.body
+
+    db('users')
+      .where('user_id', id)
+      .update({ [field]: newValue })
+
+    res.send({ message: `Field ${field} for user ${id} have been updated` })
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 router.delete('/profile/:id', async (req, res) => {
-  const {id} = req.params;
-  db('user')
-    .where('user_id', id)
-    .del()
-  res.send({message: `user with is ${id} have been deleted`});
-});
+  try {
+    const { id } = req.params
 
-module.exports = router;
+    db('users')
+      .where('user_id', id)
+      .del()
+
+    res.send({ message: `User with is ${id} have been deleted` })
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+module.exports = router

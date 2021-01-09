@@ -1,23 +1,62 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+// router
+const router = express.Router()
+// db
+const db = require('../db')
 
 router.get('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'get', id});
-});
+  try {
+    const { id } = req.params
+
+    const post = await db('posts').where('post_id', id)
+
+    res.json({ items: post })
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 router.post('/post', async (req, res) => {
-    res.send({message: 'insert'});
-});
+  try {
+    const params = req.body
+
+    await db('posts').insert({ ...params })
+
+    res.json(
+      { message: 'Post was created successfully' }
+    )
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 router.put('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'update', id});
-});
+  try {
+    const { id } = req.params
+    const { field, newValue } = req.body
+
+    db('users')
+      .where('user_id', id)
+      .update({ [field]: newValue })
+
+    res.send({ message: `Field ${field} for post ${id} have been updated` })
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 router.delete('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'delete', id});
-});
+  try {
+    const { id } = req.params
 
-module.exports = router;
+    db('posts')
+      .where('post_id', id)
+      .del()
+
+    res.send({ message: `Post with is ${id} have been deleted` })
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+module.exports = router

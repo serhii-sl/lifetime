@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   endpoint: process.env.API_URL || process.env.DEFAULT_API_URL,
@@ -8,4 +8,4 @@ module.exports = {
   db_host: process.env.DB_HOST,
   db_port: process.env.DB_PORT,
   db_name: process.env.DB_NAME
-};
+}
