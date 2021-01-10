@@ -4,7 +4,7 @@ const { v4 } = require('uuid')
 // router
 const router = express.Router()
 
-module.exports = (db) => {
+const init = (db) => {
   router.get('/profile/:id', async (req, res) => {
     try {
       const { id } = req.params
@@ -56,3 +56,8 @@ module.exports = (db) => {
     }
   })
 }
+
+module.exports = () => ({
+  init,
+  router
+})

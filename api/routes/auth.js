@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-module.exports = (db) => {
+const init = (db) => {
   router.post('/auth/login', async (req, res) => {
     try {
     } catch (e) {
@@ -13,3 +13,9 @@ module.exports = (db) => {
     res.send({ message: 'register' })
   })
 }
+
+module.exports = () => ({
+  init,
+  router
+})
+

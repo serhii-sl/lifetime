@@ -2,7 +2,7 @@ const express = require('express')
 // router
 const router = express.Router()
 
-module.exports = (db) => {
+const init = (db) => {
   router.get('/post/:id', async (req, res) => {
     try {
       const { id } = req.params
@@ -54,3 +54,8 @@ module.exports = (db) => {
     }
   })
 }
+
+module.exports = () => ({
+  init,
+  router
+})
