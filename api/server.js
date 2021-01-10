@@ -1,6 +1,8 @@
 const express = require('express')
 const { port, endpoint } = require('./config')
 const app = express()
+// db
+const db = require('./db')
 // routes
 const postsRouter = require('./routes/posts')
 const profileRouter = require('./routes/profile')
@@ -11,9 +13,9 @@ app.get('/', (req, res) => {
   res.send('Life Time')
 })
 
-app.use(authRouter)
-app.use(postsRouter)
-app.use(profileRouter)
+app.use(() => authRouter(db))
+app.use(() => postsRouter(db))
+app.use(() => profileRouter(db))
 app.use(errorRouter)
 
 app.listen(port, () => {
