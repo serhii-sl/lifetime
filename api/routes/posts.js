@@ -1,13 +1,28 @@
 const express = require('express')
 // router
 const router = express.Router()
+const passport = require('passport')
+// models
+const { getAllPosts, getPostById, createPost, updatePost, deletePost } = require('../models/post')
 
-const init = (db) => {
-  router.get('/post/:id', async (req, res) => {
+const init = (db, isAuthenticate) => {
+  router.get('/posts', isAuthenticate, async (req, res) => {
+    try {
+      const { userId } = req.body
+
+      const posts = await getAllPosts(userId, db)
+
+      res.json({ items: posts })
+    } catch (e) {
+      console.error(e)
+    }
+  })
+
+  router.get('/post/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
 
-      const post = await db('posts').where('post_id', id)
+      const post = await getPostById(id, db)
 
       res.json({ items: post })
     } catch (e) {
@@ -15,11 +30,11 @@ const init = (db) => {
     }
   })
 
-  router.post('/post', async (req, res) => {
+  router.post('/post', isAuthenticate, async (req, res) => {
     try {
       const params = req.body
 
-      await db('posts').insert({ ...params })
+      await createPost(params, db)
 
       res.json({ message: 'Post was created successfully' })
     } catch (e) {
@@ -27,14 +42,12 @@ const init = (db) => {
     }
   })
 
-  router.put('/post/:id', async (req, res) => {
+  router.put('/post/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
       const { field, newValue } = req.body
 
-      db('users')
-        .where('user_id', id)
-        .update({ [field]: newValue })
+      await updatePost(id, field, newValue, db)
 
       res.send({ message: `Field ${field} for post ${id} have been updated` })
     } catch (e) {
@@ -42,11 +55,11 @@ const init = (db) => {
     }
   })
 
-  router.delete('/post/:id', async (req, res) => {
+  router.delete('/post/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
 
-      db('posts').where('post_id', id).del()
+      await deletePost(id, db)
 
       res.send({ message: `Post with is ${id} have been deleted` })
     } catch (e) {

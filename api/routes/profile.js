@@ -1,15 +1,15 @@
 const express = require('express')
-// libs
-const { v4 } = require('uuid')
+// models
+const { updateUserField, getUserById, deleteUser, createUser } = require('../models/user')
 // router
 const router = express.Router()
 
-const init = (db) => {
-  router.get('/profile/:id', async (req, res) => {
+const init = (db, isAuthenticate) => {
+  router.get('/profile/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
 
-      const user = await db('users').where('user_id', id)
+      const user = await getUserById(id, db)
 
       res.json({ items: user })
     } catch (e) {
@@ -17,11 +17,11 @@ const init = (db) => {
     }
   })
 
-  router.post('/profile', async (req, res) => {
+  router.post('/profile', isAuthenticate, async (req, res) => {
     try {
       const params = req.body
 
-      await db('users').insert({ user_id: v4(), ...params })
+      await createUser(params, db)
 
       res.json({ message: 'Profile was created successfully' })
     } catch (e) {
@@ -29,26 +29,23 @@ const init = (db) => {
     }
   })
 
-  router.put('/profile/:id', async (req, res) => {
+  router.put('/profile/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
       const { field, newValue } = req.body
 
-      db('users')
-        .where('user_id', id)
-        .update({ [field]: newValue })
-
+      await updateUserField(id, field, newValue, db)
       res.send({ message: `Field ${field} for user ${id} have been updated` })
     } catch (e) {
       console.error(e)
     }
   })
 
-  router.delete('/profile/:id', async (req, res) => {
+  router.delete('/profile/:id', isAuthenticate, async (req, res) => {
     try {
       const { id } = req.params
 
-      db('users').where('user_id', id).del()
+      await deleteUser(id)
 
       res.send({ message: `User with is ${id} have been deleted` })
     } catch (e) {
