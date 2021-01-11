@@ -3,7 +3,7 @@ const router = express.Router()
 // libs
 const jwt = require('jsonwebtoken')
 // models
-const { comparePass, getUserByEmail } = require('../models/user')
+const { comparePass, getUserByEmail, createUser } = require('../models/user')
 // config
 const { auth_secret } = require('../config')
 
@@ -42,8 +42,15 @@ const init = (db) => {
   })
 
   router.post('/register', async (req, res) => {
-    // ...
-    res.send({ message: 'register' })
+    const data = req.body
+    const userExist = getUserByEmail(data.user_id)
+
+    if (userExist) {
+      res.send({ message: 'User with this email already exist' })
+    } else {
+      await createUser(data, db)
+      res.send({ message: 'register' })
+    }
   })
 }
 

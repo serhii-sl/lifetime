@@ -19,9 +19,9 @@ const init = (db, isAuthenticate) => {
 
   router.post('/profile', isAuthenticate, async (req, res) => {
     try {
-      const params = req.body
+      const data = req.body
 
-      await createUser(params, db)
+      await createUser(data, db)
 
       res.json({ message: 'Profile was created successfully' })
     } catch (e) {
