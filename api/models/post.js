@@ -16,7 +16,7 @@ const getPostById = async (id, db) => {
 
 const getAllPosts = async (email, db) => {
   try {
-    return await db('users').where('email', email)
+    return await db('posts').select()
   } catch (err) {
     console.error({ message: '[getUserByEmail] Select operation failed', err })
   }
