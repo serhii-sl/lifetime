@@ -40,7 +40,7 @@ const deletePost = async (id, db) => {
 
 const updatePost = async (id, fieldName, newValue, db) => {
   try {
-    db('posts')
+    await db('posts')
       .where('post_id', id)
       .update({ [fieldName]: newValue })
 
