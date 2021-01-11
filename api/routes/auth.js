@@ -7,8 +7,8 @@ const { comparePass, getUserByEmail } = require('../models/user')
 // config
 const { auth_secret } = require('../config')
 
-const init = (db, isAuthenticate) => {
-  router.post('/login', isAuthenticate, async (req, res) => {
+const init = (db) => {
+  router.post('/login', async (req, res) => {
     try {
       const { email, password } = req.body
       const [user] = await getUserByEmail(email, db)
@@ -41,7 +41,7 @@ const init = (db, isAuthenticate) => {
     }
   })
 
-  router.post('/register', isAuthenticate, async (req, res) => {
+  router.post('/register', async (req, res) => {
     // ...
     res.send({ message: 'register' })
   })

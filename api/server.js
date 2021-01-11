@@ -37,7 +37,7 @@ const isAuthenticate = passport.authenticate('jwt', {
   failureRedirect: '/login'
 }, null)
 
-auth.init(db, isAuthenticate)
+auth.init(db)
 posts.init(db, isAuthenticate)
 profile.init(db, isAuthenticate)
 app.use(auth.router)
