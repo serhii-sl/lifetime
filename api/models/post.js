@@ -18,7 +18,7 @@ const getAllPosts = async (email, db) => {
   try {
     return await db('posts').select()
   } catch (err) {
-    console.error({ message: '[getUserByEmail] Select operation failed', err })
+    console.error({ message: '[getAllPosts] Select operation failed', err })
   }
 }
 
@@ -34,7 +34,7 @@ const deletePost = async (id, db) => {
   try {
     await db('posts').where('post_id', id).del()
   } catch (e) {
-    console.error({ message: '[deleteUser] Delete operation failed' })
+    console.error({ message: '[deletePost] Delete operation failed' })
   }
 }
 

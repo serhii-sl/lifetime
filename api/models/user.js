@@ -34,7 +34,7 @@ const createUser = async (data, db) => {
 
     await db('users').insert({ user_id: v4(), password: passwordHash, ...data })
   } catch (e) {
-    console.error({ message: '[addUser] Compare operation failed' })
+    console.error({ message: '[createUser] Compare operation failed' })
   }
 }
 
