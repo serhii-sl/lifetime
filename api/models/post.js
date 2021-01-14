@@ -1,24 +1,16 @@
-const getPostsByUser = async (userId, db) => {
-  try {
-    return await db('posts').where('creator', userId)
-  } catch (err) {
-    console.error({ message: '[getPostsByUser] Select operation failed', err })
-  }
-}
-
-const getPostById = async (id, db) => {
+const getPostsById = async (id, db) => {
   try {
     return await db('posts').where('post_id', id)
   } catch (err) {
-    console.error({ message: '[getPostById] Select operation failed', err })
+    console.error({ message: '[getPostsBy] Select operation failed', err })
   }
 }
 
-const getAllPosts = async (email, db) => {
+const getPostsByArrayValues = async (fieldName, fieldValues, db) => {
   try {
-    return await db('posts').select()
+    return await db('posts').whereIn(fieldName, fieldValues)
   } catch (err) {
-    console.error({ message: '[getAllPosts] Select operation failed', err })
+    console.error({ message: '[getPostsByArrayValues] Select operation failed', err })
   }
 }
 
@@ -30,30 +22,28 @@ const createPost = async (data, db) => {
   }
 }
 
-const deletePost = async (id, db) => {
+const deleteById = async (id, db) => {
   try {
     await db('posts').where('post_id', id).del()
   } catch (e) {
-    console.error({ message: '[deletePost] Delete operation failed' })
+    console.error({ message: '[deleteById] Delete operation failed' })
   }
 }
 
-const updatePost = async (id, fieldName, newValue, db) => {
+const updateById = async (id, fieldName, newValue, db) => {
   try {
     await db('posts')
       .where('post_id', id)
       .update({ [fieldName]: newValue })
-
   } catch (e) {
-    console.error({ message: '[updatePost] Update operation failed' })
+    console.error({ message: '[updateById] Update operation failed' })
   }
 }
 
 module.exports = {
-  getPostsByUser,
-  getPostById,
-  getAllPosts,
+  getPostsById,
+  getPostsByArrayValues,
   createPost,
-  deletePost,
-  updatePost
+  deleteById,
+  updateById
 }
