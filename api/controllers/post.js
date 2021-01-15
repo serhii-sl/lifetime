@@ -1,6 +1,6 @@
 // models
-const { getFriendIdsForUser } = require('../models/friend')
-const { getPostsById, getPostsByArrayValues, createPost, updateById, deleteById } = require('../models/post')
+const { getFriendIds } = require('../models/friend')
+const { getPostsById, getPostsByCreatorIds, createPost, updateById, deleteById } = require('../models/post')
 // db
 const db = require('../db')
 
@@ -20,8 +20,8 @@ const getAllPosts = async (req, res) => {
   try {
     const { userId } = req.body
 
-    const ids = await getFriendIdsForUser(userId, db)
-    const posts = await getPostsByArrayValues(ids, db)
+    const ids = await getFriendIds(userId, db)
+    const posts = await getPostsByCreatorIds(ids, db)
 
     res.json({ items: posts })
   } catch (e) {

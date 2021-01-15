@@ -6,11 +6,11 @@ const getPostsById = async (id, db) => {
   }
 }
 
-const getPostsByArrayValues = async (fieldName, fieldValues, db) => {
+const getPostsByCreatorIds = async (fieldName, fieldValues, db) => {
   try {
-    return await db('posts').whereIn(fieldName, fieldValues)
+    return await db('posts').whereIn('creator', fieldValues)
   } catch (err) {
-    console.error({ message: '[getPostsByArrayValues] Select operation failed', err })
+    console.error({ message: '[getPostsByCreatorIds] Select operation failed', err })
   }
 }
 
@@ -42,7 +42,7 @@ const updateById = async (id, fieldName, newValue, db) => {
 
 module.exports = {
   getPostsById,
-  getPostsByArrayValues,
+  getPostsByCreatorIds,
   createPost,
   deleteById,
   updateById

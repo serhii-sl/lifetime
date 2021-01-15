@@ -1,12 +1,19 @@
 // libs
 const { v4 } = require('uuid')
-const bcrypt = require('bcrypt')
 
 const getUserById = async (userId, db) => {
   try {
     return await db('users').where('user_id', userId)
   } catch (err) {
     console.error({ message: '[getUserById] Select operation failed', err })
+  }
+}
+
+const getUsersByIds = async (fieldValues, db) => {
+  try {
+    return await db('users').whereIn('user_id', fieldValues)
+  } catch (err) {
+    console.error({ message: '[getUsersByIds] Select operation failed', err })
   }
 }
 
@@ -18,23 +25,11 @@ const getUserByEmail = async (email, db) => {
   }
 }
 
-const comparePass = async (userPassword, dbPassword) => {
+const saveUser = async (data, hashedPassword, db) => {
   try {
-    const verified = bcrypt.compareSync(userPassword, dbPassword)
-    return !!verified
+    await db('users').insert({ user_id: v4(), ...data, password: hashedPassword })
   } catch (e) {
-    console.error({ message: '[comparePass] Compare operation failed' })
-  }
-}
-
-const createUser = async (data, db) => {
-  try {
-    const {password} = data
-    const passwordHash = bcrypt.hashSync(password, 10)
-
-    await db('users').insert({ user_id: v4(), password: passwordHash, ...data })
-  } catch (e) {
-    console.error({ message: '[createUser] Compare operation failed' })
+    console.error({ message: '[saveUser] Create user operation failed' })
   }
 }
 
@@ -48,13 +43,9 @@ const deleteUser = async (userId, db) => {
 
 const updateUserField = async (userId, fieldName, newValue, db) => {
   try {
-    if(fieldName === 'password')
-      return
-
     await db('users')
       .where('user_id', userId)
       .update({ [fieldName]: newValue })
-
   } catch (e) {
     console.error({ message: '[updateUserField] Update operation failed' })
   }
@@ -62,9 +53,9 @@ const updateUserField = async (userId, fieldName, newValue, db) => {
 
 module.exports = {
   getUserById,
+  getUsersByIds,
   getUserByEmail,
-  comparePass,
-  createUser,
+  saveUser,
   deleteUser,
   updateUserField
 }

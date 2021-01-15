@@ -1,10 +1,10 @@
-const getFriendIdsForUser = async (userId, db) => {
+const getFriendIds = async (userId, db) => {
   try {
     const friendships = await db('friendship').where('status', 2).andWhere('sender', userId).orWhere('receiver', userId) || []
 
-    return friendships.map(item => item.sender !== userId ? item.sender : item. receiver)
+    return friendships.map(item => item.sender !== userId ? item.sender : item.receiver)
   } catch (err) {
-    console.error({ message: '[getFriendsForUser] Select operation failed', err })
+    console.error({ message: '[getFriendIds] Select operation failed', err })
   }
 }
 
@@ -27,7 +27,7 @@ const changeFriendshipStatus = async (userId, senderId, status, db) => {
 }
 
 module.exports = {
-  getFriendIdsForUser,
+  getFriendIds,
   getPendingFriendshipIdsRequests,
   changeFriendshipStatus
 }

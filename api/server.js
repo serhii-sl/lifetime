@@ -22,7 +22,7 @@ require('./passport')(passport, db)
 app.use('/post', postsRoutes)
 app.use('/profile',  profileRoutes)
 app.use('/auth', authRoutes)
-app.use('/friend', friendRoutes)
+app.use('/friends', friendRoutes)
 
 app.listen(port, () => {
   console.log(`App listening at ${endpoint}:${port}`)
