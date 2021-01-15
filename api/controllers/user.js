@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 // models
 const { getUserById, saveUser, deleteUser, updateUserField } = require('../models/user')
 // db
-const db = require('../db')
+const db = require('../services/db')
 
 const getProfile = async (req, res) => {
   try {

@@ -2,7 +2,7 @@
 const { getUsersByIds } = require('../models/user')
 const { getFriendIds, getPendingFriendshipIdsRequests } = require('../models/friend')
 // db
-const db = require('../db')
+const db = require('../services/db')
 
 const getFriends = async (req, res) => {
   try {

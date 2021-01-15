@@ -1,10 +1,10 @@
 // models
-const { getUserByEmail } = require('./models/user')
+const { getUserByEmail } = require('../../models/user')
 // strategy
 const JwtStrategy = require('passport-jwt').Strategy,
   ExtractJwt = require('passport-jwt').ExtractJwt
 // config
-const { auth_secret } = require('./config')
+const { auth_secret } = require('../../config')
 
 module.exports = (passport, db) => {
   const opts = {}

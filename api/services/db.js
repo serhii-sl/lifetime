@@ -1,4 +1,4 @@
-const {db_user, db_password, db_host, db_port, db_name} = require('./config')
+const {db_user, db_password, db_host, db_port, db_name} = require('../config')
 
 module.exports = require('knex')({
   client: 'pg',

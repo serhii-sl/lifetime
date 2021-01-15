@@ -2,7 +2,7 @@
 const { getFriendIds } = require('../models/friend')
 const { getPostsById, getPostsByCreatorIds, createPost, updateById, deleteById } = require('../models/post')
 // db
-const db = require('../db')
+const db = require('../services/db')
 
 const getOnePost = async (req, res) => {
   try {

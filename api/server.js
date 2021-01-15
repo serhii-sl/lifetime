@@ -11,17 +11,17 @@ const profileRoutes = require('./routes/profile');
 const authRoutes = require('./routes/auth');
 const friendRoutes = require('./routes/friend');
 // db
-const db = require('./db')
+const db = require('./services/db')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(passport.initialize({}))
 app.use(passport.session({}))
-require('./passport')(passport, db)
+require('./services/auth/passport')(passport, db)
 
+app.use('/auth', authRoutes)
 app.use('/post', postsRoutes)
 app.use('/profile',  profileRoutes)
-app.use('/auth', authRoutes)
 app.use('/friends', friendRoutes)
 
 app.listen(port, () => {
