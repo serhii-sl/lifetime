@@ -1,22 +1,31 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { Date, Header, HeaderContent, Name, PostWrapper, PostContent } from './styles';
+import {
+  Date,
+  Header,
+  HeaderContent,
+  Name,
+  PostWrapper,
+  PostContent,
+} from './styles'
 // components
-import Avatar from '../../../shared/Avatar';
-import Images from './components/ImagesContainer';
+import Avatar from '../../../shared/Avatar'
+import Images from './components/ImagesContainer'
 
 interface IPost {
-  owner: any;
-  text: string;
-  createdDate: any;
-  images: Array<string>;
+  owner: any
+  text: string
+  createdDate: any
+  images: Array<string>
 }
 
 interface IPostProps {
-  post: IPost;
+  post: IPost
 }
 
-const Posts: React.FC<IPostProps> = ({ post: { owner, text, createdDate, images } }) => (
+const Posts: React.FC<IPostProps> = ({
+  post: { owner, text, createdDate, images },
+}) => (
   <PostWrapper>
     <Header>
       <Avatar avatarSrc={owner.avatarSrc} />
@@ -28,6 +37,6 @@ const Posts: React.FC<IPostProps> = ({ post: { owner, text, createdDate, images 
     <PostContent>{text}</PostContent>
     <Images images={images} />
   </PostWrapper>
-);
+)
 
-export default Posts;
+export default Posts

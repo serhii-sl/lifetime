@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { HeaderWrapper, LogoIcon } from './styles';
+import { HeaderWrapper, LogoIcon } from './styles'
 // components
-import Avatar from '../../../shared/Avatar';
-import ProfileTooltip from './components/ProfileTooltip';
-import NavigationTabs from './components/NavigationTabs';
+import Avatar from '../../../shared/Avatar'
+import ProfileTooltip from './components/ProfileTooltip'
+import NavigationTabs from './components/NavigationTabs'
 
 const Header: React.FC = () => (
   <HeaderWrapper>
@@ -14,6 +14,6 @@ const Header: React.FC = () => (
       <Avatar avatarSrc={'static/images/avatar_mock.png'} />
     </ProfileTooltip>
   </HeaderWrapper>
-);
+)
 
-export default Header;
+export default Header

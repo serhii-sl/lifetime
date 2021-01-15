@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 
 const SocialNetworkLogin = () => {
-  return <div>Login</div>;
-};
+  return <div>Login</div>
+}
 
-export default SocialNetworkLogin;
+export default SocialNetworkLogin

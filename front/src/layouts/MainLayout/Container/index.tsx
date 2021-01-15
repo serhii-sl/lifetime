@@ -1,7 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { ContainerStyles } from './styles';
+import { ContainerStyles } from './styles'
 
-const Container: React.FC = ({ children }) => <ContainerStyles>{children}</ContainerStyles>;
+const Container: React.FC = ({ children }) => (
+  <ContainerStyles>{children}</ContainerStyles>
+)
 
-export default Container;
+export default Container

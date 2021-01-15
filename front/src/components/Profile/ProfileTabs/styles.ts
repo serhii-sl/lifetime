@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ProfileTabsWrapper = styled.div`
   display: flex;
@@ -6,5 +6,4 @@ export const ProfileTabsWrapper = styled.div`
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid ${({ theme }) => theme.colors.blue100};
-`;
-
+`

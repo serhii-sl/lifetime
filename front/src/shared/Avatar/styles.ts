@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const AvatarComponent = styled.img<{ isOnline?: boolean }>`
   width: 42px;
@@ -13,4 +13,4 @@ export const AvatarComponent = styled.img<{ isOnline?: boolean }>`
     filter: drop-shadow(1px 3x 4px ${({ theme }) => theme.colors.blue150});
     transform: scale(1.03);
   }
-`;
+`

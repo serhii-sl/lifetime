@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import './index.css'
+import App from './App'
 
-const history = createBrowserHistory();
+const history = createBrowserHistory()
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,4 +14,4 @@ ReactDOM.render(
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)

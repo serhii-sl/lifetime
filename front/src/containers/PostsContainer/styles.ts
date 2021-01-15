@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const PostsWrapper = styled.div`
   width: 100%;
@@ -8,4 +8,4 @@ export const PostsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 24px;
-`;
+`

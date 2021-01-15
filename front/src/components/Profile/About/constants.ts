@@ -5,7 +5,7 @@ export const PROFILE_ABOUT_DATA = [
     imageSrc: 'static/images/avatar_mock.png',
     link: 'https://cultum.io/',
     linkText: 'Cultum.io',
-    placeholder: 'Add work'
+    placeholder: 'Add work',
   },
   {
     headerText: 'Lives in',
@@ -26,18 +26,18 @@ export const PROFILE_ABOUT_DATA = [
     imageSrc: 'static/images/avatar_mock.png',
     linkText: 'Katie Kuchma',
     link: '/',
-    placeholder: 'Add relationship'
+    placeholder: 'Add relationship',
   },
   {
     headerText: 'Sumy State University(SSU)',
     description: 'Graduated in 2019',
     imageSrc: 'static/images/avatar_mock.png',
-    placeholder: 'Add study'
+    placeholder: 'Add study',
   },
   {
     linkText: 'https://www.instagram.com/slavita_sergey/',
     link: 'https://www.instagram.com/slavita_sergey/',
     imageSrc: 'static/images/avatar_mock.png',
-    placeholder: 'Add contact'
-  }
-];
+    placeholder: 'Add contact',
+  },
+]

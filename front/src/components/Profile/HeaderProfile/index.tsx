@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { Wrapper, Avatar, UserName } from './styles';
+import { Wrapper, Avatar, UserName } from './styles'
 
 const HeaderProfile = () => {
   return (
@@ -8,7 +8,7 @@ const HeaderProfile = () => {
       <Avatar src={'static/images/avatar_mock1.jpeg'} />
       <UserName>Serhii Slavita</UserName>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default HeaderProfile;
+export default HeaderProfile

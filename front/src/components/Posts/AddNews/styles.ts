@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const FieldWrapper = styled.div`
   width: 100%;
@@ -16,7 +16,7 @@ export const FieldWrapper = styled.div`
   border-radius: 8px;
   box-sizing: border-box;
   box-shadow: 1px 4px 8px -4px ${({ theme }) => theme.colors.blue100};
-`;
+`
 
 export const AddButton = styled.img`
   width: 36px;
@@ -33,4 +33,4 @@ export const AddButton = styled.img`
     opacity: 1;
     transform: scale(1.03);
   }
-`;
+`

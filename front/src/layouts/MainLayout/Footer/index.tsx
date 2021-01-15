@@ -1,5 +1,5 @@
-import * as React from 'react';
+import * as React from 'react'
 
-const Footer = () => <div/>;
+const Footer = () => <div />
 
-export default Footer;
+export default Footer

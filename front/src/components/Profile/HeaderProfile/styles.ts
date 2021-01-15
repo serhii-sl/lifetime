@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100vw;
-  background-image: url("static/images/profile-background.jpg");
+  background-image: url('static/images/profile-background.jpg');
   height: 250px;
   position: relative;
 `

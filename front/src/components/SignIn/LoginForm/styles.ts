@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const LoginFormStyled = styled.form`
   display: flex;
@@ -9,7 +9,7 @@ export const LoginFormStyled = styled.form`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 40px;
   box-shadow: 10px 12px 24px rgba(0, 0, 0, 0.5);
-`;
+`
 
 export const LoginButton = styled.button`
   display: block;
@@ -24,19 +24,19 @@ export const LoginButton = styled.button`
   background: linear-gradient(to right, #116fe8 0%, #002bad 100%);
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
-`;
+`
 
 export const Header = styled.div`
   font-size: 28px;
   margin-bottom: 24px;
-`;
+`
 
 export const Text = styled.div`
   font-size: 22px;
   margin: 24px 0;
-`;
+`
 
 export const SocialIcon = styled.img`
   width: 36px;
   margin: 0 8px;
-`;
+`

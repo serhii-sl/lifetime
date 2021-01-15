@@ -1,18 +1,34 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { Image, Wrapper, TextWrapper, HeaderText, Description, Link, Placeholder, ContentWrapper } from './styles';
+import {
+  Image,
+  Wrapper,
+  TextWrapper,
+  HeaderText,
+  Description,
+  Link,
+  Placeholder,
+  ContentWrapper,
+} from './styles'
 
 interface IAboutItemProps {
-  headerText?: string;
-  description?: string;
-  imageSrc?: string;
-  link?: string;
-  linkText?: string;
-  placeholder: string;
+  headerText?: string
+  description?: string
+  imageSrc?: string
+  link?: string
+  linkText?: string
+  placeholder: string
 }
 
-const AboutItem: React.FC<IAboutItemProps> = ({ imageSrc, headerText, description, link, linkText, placeholder }) => {
-  const isEmptySection = !headerText && !link;
+const AboutItem: React.FC<IAboutItemProps> = ({
+  imageSrc,
+  headerText,
+  description,
+  link,
+  linkText,
+  placeholder,
+}) => {
+  const isEmptySection = !headerText && !link
 
   return (
     <Wrapper>
@@ -35,7 +51,7 @@ const AboutItem: React.FC<IAboutItemProps> = ({ imageSrc, headerText, descriptio
         </ContentWrapper>
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default AboutItem;
+export default AboutItem

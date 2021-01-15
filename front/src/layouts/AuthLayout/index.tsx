@@ -1,7 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { AuthWrapper } from './styles';
+import { AuthWrapper } from './styles'
 
-const AuthLayout: React.FC = ({ children }) => <AuthWrapper>{children}</AuthWrapper>;
+const AuthLayout: React.FC = ({ children }) => (
+  <AuthWrapper>{children}</AuthWrapper>
+)
 
-export default AuthLayout;
+export default AuthLayout

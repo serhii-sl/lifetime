@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 
 const SignUpContainer = () => {
-  return <div>Register</div>;
-};
+  return <div>Register</div>
+}
 
-export default SignUpContainer;
+export default SignUpContainer

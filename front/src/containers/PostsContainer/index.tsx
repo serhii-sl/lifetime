@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 // mock
-import { POSTS_MOCK } from './constants';
+import { POSTS_MOCK } from './constants'
 // components
-import AddNews from '../../components/Posts/AddNews';
-import Post from '../../components/Posts/Post';
+import AddNews from '../../components/Posts/AddNews'
+import Post from '../../components/Posts/Post'
 // styles
-import { PostsWrapper } from './styles';
+import { PostsWrapper } from './styles'
 
 const PostsContainer = () => (
   <PostsWrapper>
@@ -14,6 +14,6 @@ const PostsContainer = () => (
       <Post post={post} key={post.postId} />
     ))}
   </PostsWrapper>
-);
+)
 
-export default PostsContainer;
+export default PostsContainer

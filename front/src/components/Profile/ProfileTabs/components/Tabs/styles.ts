@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const TabsWrapper = styled.div`
   display: flex;
@@ -6,13 +6,14 @@ export const TabsWrapper = styled.div`
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid ${({ theme }) => theme.colors.blue100};
-`;
+`
 
 export const Tab = styled.div<{ isActive?: boolean }>`
   display: flex;
   padding: 24px;
   font-size: 18px;
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.blue800 : theme.colors.gray500)};
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.blue800 : theme.colors.gray500};
   cursor: pointer;
   position: relative;
 
@@ -31,4 +32,4 @@ export const Tab = styled.div<{ isActive?: boolean }>`
         border-radius: 3px 3px 0 0;
       }
     `};
-`;
+`

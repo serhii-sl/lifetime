@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 // styles
-import { TooltipWrapper, TooltipContent, Option } from './styles';
+import { TooltipWrapper, TooltipContent, Option } from './styles'
 // constants
-import { PROFILE_TOOLTIP_OPTIONS } from './constants';
+import { PROFILE_TOOLTIP_OPTIONS } from './constants'
 // router
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const ProfileTooltip: React.FC = ({ children }) => {
   return (
@@ -12,15 +12,13 @@ const ProfileTooltip: React.FC = ({ children }) => {
       <TooltipContent className={'tooltip-content'}>
         {PROFILE_TOOLTIP_OPTIONS.map(({ title, href }, index) => (
           <Link to={href} key={index}>
-            <Option>
-              {title}
-            </Option>
+            <Option>{title}</Option>
           </Link>
         ))}
       </TooltipContent>
       {children}
     </TooltipWrapper>
   )
-};
+}
 
-export default ProfileTooltip;
+export default ProfileTooltip

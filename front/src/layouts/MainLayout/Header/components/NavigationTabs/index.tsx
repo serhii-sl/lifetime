@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'
 // constants
-import { TABS } from './constants';
+import { TABS } from './constants'
 // styles
-import { NavigationTabsWrapper, Tab } from './styles';
+import { NavigationTabsWrapper, Tab } from './styles'
 // router
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'
 
 const NavigationTabs: React.FC = () => {
   // hooks
@@ -13,12 +13,12 @@ const NavigationTabs: React.FC = () => {
   return (
     <NavigationTabsWrapper>
       {TABS.map(({ title, href }, index) => (
-          <Link to={href} key={index}>
-            <Tab isActive={location.pathname === href}>{title}</Tab>
-          </Link>
+        <Link to={href} key={index}>
+          <Tab isActive={location.pathname === href}>{title}</Tab>
+        </Link>
       ))}
     </NavigationTabsWrapper>
-  );
-};
+  )
+}
 
-export default NavigationTabs;
+export default NavigationTabs

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HeaderWrapper = styled.div`
   height: 72px;
@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   border: 2px solid ${({ theme }) => theme.colors.gray200};
   box-sizing: border-box;
-`;
+`
 
 export const LogoIcon = styled.img`
   width: 56px;
@@ -20,4 +20,4 @@ export const LogoIcon = styled.img`
     filter: drop-shadow(3px 6x 4px ${({ theme }) => theme.colors.blue100});
     transform: scale(1.03);
   }
-`;
+`

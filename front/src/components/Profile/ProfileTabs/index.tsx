@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from 'react'
 // components
-import Tabs from './components/Tabs';
-import About from '../About';
+import Tabs from './components/Tabs'
+import About from '../About'
 // constants
-import { PROFILE_TABS } from './constants';
+import { PROFILE_TABS } from './constants'
 
 const ProfileTabs: React.FC = () => {
-  const [profileTab, setProfileTab] = React.useState(PROFILE_TABS.ABOUT);
+  const [profileTab, setProfileTab] = React.useState(PROFILE_TABS.ABOUT)
 
   return (
     <>
@@ -15,7 +15,7 @@ const ProfileTabs: React.FC = () => {
       {profileTab === PROFILE_TABS.FRIENDS && <div>Profile</div>}
       {profileTab === PROFILE_TABS.PHOTOS && <div>Photos</div>}
     </>
-  );
-};
+  )
+}
 
-export default ProfileTabs;
+export default ProfileTabs

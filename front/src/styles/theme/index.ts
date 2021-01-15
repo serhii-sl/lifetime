@@ -19,7 +19,7 @@ export const colors = {
   purple800: '#2a2a72',
 
   white: '#fff',
-  red: '#ff0000'
+  red: '#ff0000',
 }
 
 export const SIZE = {

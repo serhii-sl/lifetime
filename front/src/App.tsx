@@ -1,29 +1,32 @@
-import * as React from 'react';
+import * as React from 'react'
 // layouts
-import MainLayout from './layouts/MainLayout';
-import AuthLayout from './layouts/AuthLayout';
+import MainLayout from './layouts/MainLayout'
+import AuthLayout from './layouts/AuthLayout'
 // store
-import store from './store';
+import store from './store'
 // containers
-import SignInContainer from './containers/Authorization/SignInContainer';
-import SignUpContainer from './containers/Authorization/SignUpContainer';
-import ProfileContainer from './containers/ProfileContainer';
-import PostsContainer from './containers/PostsContainer';
+import SignInContainer from './containers/Authorization/SignInContainer'
+import SignUpContainer from './containers/Authorization/SignUpContainer'
+import ProfileContainer from './containers/ProfileContainer'
+import PostsContainer from './containers/PostsContainer'
 // router
-import { withRouter, Route, Redirect } from 'react-router-dom';
+import { withRouter, Route, Redirect } from 'react-router-dom'
 // providers
-import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components'
+import { Provider } from 'react-redux'
 // local
-import { theme } from './styles/theme';
+import { theme } from './styles/theme'
 // global css
-import 'normalize.css/normalize.css';
+import 'normalize.css/normalize.css'
 
 const App = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Route exact path={['/', '/home', '/friends', '/messenger', '/profile']}>
+        <Route
+          exact
+          path={['/', '/home', '/friends', '/messenger', '/profile']}
+        >
           <MainLayout>
             <Route path='/home' component={PostsContainer} />
             <Route path='/messenger' render={() => <div>MESSENGER</div>} />
@@ -40,7 +43,7 @@ const App = () => {
         </Route>
       </ThemeProvider>
     </Provider>
-  );
-};
+  )
+}
 
-export default withRouter(App);
+export default withRouter(App)

@@ -1,18 +1,19 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const NavigationTabsWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const Tab = styled.div<{ isActive?: boolean }>`
   height: 100%;
   display: flex;
   padding: 24px;
   font-size: 18px;
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.blue800 : theme.colors.gray500)};
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.blue800 : theme.colors.gray500};
   cursor: pointer;
   position: relative;
 
@@ -31,4 +32,4 @@ export const Tab = styled.div<{ isActive?: boolean }>`
         border-radius: 0 0 3px 3px;
       }
     `};
-`;
+`

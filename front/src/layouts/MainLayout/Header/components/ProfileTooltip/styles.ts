@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TooltipWrapper = styled.div`
   position: relative;
@@ -16,7 +16,7 @@ export const TooltipWrapper = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 export const TooltipContent = styled.div`
   position: absolute;
@@ -28,7 +28,7 @@ export const TooltipContent = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.white};
-`;
+`
 
 export const Option = styled.div`
   display: flex;
@@ -47,4 +47,4 @@ export const Option = styled.div`
     opacity: 1;
     background-color: ${({ theme }) => theme.colors.blue200};
   }
-`;
+`

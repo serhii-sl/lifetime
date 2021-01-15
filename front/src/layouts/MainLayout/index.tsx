@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from 'react'
 // components
-import Header from './Header';
-import Container from './Container';
-import Footer from './Footer';
+import Header from './Header'
+import Container from './Container'
+import Footer from './Footer'
 
 const MainLayout: React.FC = ({ children }) => (
   <>
@@ -10,6 +10,6 @@ const MainLayout: React.FC = ({ children }) => (
     <Container>{children}</Container>
     <Footer />
   </>
-);
+)
 
-export default MainLayout;
+export default MainLayout

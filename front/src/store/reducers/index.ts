@@ -3,7 +3,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 import { reducer as form } from 'redux-form'
 
 const rootReducer = combineReducers({
-  form
+  form,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

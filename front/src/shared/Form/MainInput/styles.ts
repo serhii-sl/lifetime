@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Input = styled.input`
   padding: 12px 12px 12px 58px;
@@ -16,31 +16,31 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.gray180};
     font-size: 16px;
   }
-`;
+`
 
 export const Label = styled.label`
   display: block;
   font-size: 16px;
   color: ${({ theme }) => theme.colors.gray400};
-`;
+`
 
 export const Error = styled.div`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.red};
   text-align: center;
-`;
+`
 
 export const Wrapper = styled.div`
   margin: 8px 0;
   position: relative;
-  
+
   img {
-    position:absolute;
+    position: absolute;
     z-index: 999;
-    bottom:0;
+    bottom: 0;
     top: calc(50% + 2px);
     transform: translateY(-50%);
     left: 16px;
     height: 26px;
   }
-`;
+`
