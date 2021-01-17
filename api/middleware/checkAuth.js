@@ -1,7 +1,4 @@
-module.exports = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next()
-  } else {
-    res.status(401).send({ status: 'error', error: 'Not authorized' })
-  }
-}
+const passport = require('passport')
+
+module.exports = passport.authenticate('jwt', { session: false }, null)
+

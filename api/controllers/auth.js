@@ -35,11 +35,7 @@ const signIn = async (req, res) => {
       return res.json({
         success: true,
         token: 'JWT ' + token,
-        user: {
-          id: user.user_id,
-          fullName: user.full_name,
-          email: user.email
-        }
+        user: user
       })
     } else {
       res.json({ status: 'error', message: 'Password not match' })

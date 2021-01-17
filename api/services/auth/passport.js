@@ -12,9 +12,11 @@ module.exports = (passport, db) => {
   opts.secretOrKey = auth_secret
 
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    return getUserByEmail(jwt_payload.sub, db)
-      .then((user) => {
-        if (user) {
+    return getUserByEmail(jwt_payload.email, db)
+      .then((items) => {
+        const [user] = items
+
+        if (user && user.email_verified) {
           return done(null, user)
         }
         return done(null, false)
