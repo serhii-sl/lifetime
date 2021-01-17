@@ -33,9 +33,9 @@ const signIn = async (req, res) => {
       })
 
       return res.json({
-        success: true,
+        status: 'success',
         token: 'JWT ' + token,
-        userId:  user.user_id
+        userId: user.user_id
       })
     } else {
       res.json({ status: 'error', message: 'Password not match' })
@@ -80,7 +80,13 @@ const verificationEmail = async (req, res) => {
       if (decoded.userId === id) {
         await updateUserField(id, 'email_verified', true, db)
       }
-      res.send({ status: 'success', userId: id })
+
+      res.send({
+        status: 'success',
+        message: 'Email confirmation have been resent',
+        token: 'JWT ' + token,
+        userId: id
+      })
     } catch (err) {
       res.status(500).send({ status: 'error', error: err })
     }
