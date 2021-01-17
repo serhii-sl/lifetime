@@ -21,8 +21,8 @@ const signIn = async (req, res) => {
       return res.json({ status: 'error', message: 'User not found' })
     }
 
-    if (!user.email_confirmed) {
-      return res.send({ status: 'error', message: 'Please verify your email' })
+    if (!user.email_verified) {
+      return res.send({ status: 'error', message: 'Please confirm your email' })
     }
 
     const isMatchPassword = await comparePass(password, user.password)
@@ -69,9 +69,9 @@ const signUp = async (req, res) => {
     try {
       await sendEmailVerification(createdUser.email, confirmationLink)
 
-      res.send({ status: 'success', message: 'Email confirmation code have been send' })
+      res.send({ status: 'success', message: 'Confirmation email have been sent' })
     } catch (err) {
-      res.status(500).send({ status: 'error', message: 'Can\'t send email verification', error: err })
+      res.status(500).send({ status: 'error', message: 'Can\'t send email confirmation', error: err })
     }
   }
 }
@@ -82,7 +82,7 @@ const verificationEmail = async (req, res) => {
   jwt.verify(token, auth_secret, async (err, decoded) => {
     try {
       if (decoded.userId === id) {
-        await updateUserField(id, 'email_confirmed', true, db)
+        await updateUserField(id, 'email_verified', true, db)
       }
       res.send({ status: 'success', userId: id })
     } catch (err) {
@@ -102,9 +102,9 @@ const resendVerificationLink = async (req, res) => {
   try {
     await sendEmailVerification(user.email, confirmationLink)
 
-    res.send({ status: 'success', message: 'Email confirmation code have been resend' })
+    res.send({ status: 'success', message: 'Email confirmation have been resent' })
   } catch (err) {
-    res.status(500).send({ status: 'error', message: 'Can\'t send email verification', error: err })
+    res.status(500).send({ status: 'error', message: 'Can\'t send confirmation email', error: err })
   }
 }
 
