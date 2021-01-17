@@ -76,7 +76,7 @@ const signUp = async (req, res) => {
   }
 }
 
-const confirmationEmail = async (req, res) => {
+const verificationEmail = async (req, res) => {
   const { id, token } = req.params
 
   jwt.verify(token, auth_secret, async (err, decoded) => {
@@ -91,7 +91,7 @@ const confirmationEmail = async (req, res) => {
   })
 }
 
-const resendConfirmationLink = async (req, res) => {
+const resendVerificationLink = async (req, res) => {
   const { id } = req.params
 
   const url = req.protocol + '://' + req.get('host') + '/auth'
@@ -112,8 +112,8 @@ const resendConfirmationLink = async (req, res) => {
 module.exports = {
   signIn,
   signUp,
-  confirmationEmail,
-  resendConfirmationLink
+  verificationEmail,
+  resendVerificationLink
 }
 
 
