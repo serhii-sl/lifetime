@@ -1,7 +1,5 @@
-// libs
-const bcrypt = require('bcrypt')
 // models
-const { getUserById, saveUser, deleteUser, updateUserField } = require('../models/user')
+const { getUserById, deleteUser, updateUserField } = require('../models/user')
 // db
 const db = require('../services/db')
 
@@ -13,21 +11,7 @@ const getProfile = async (req, res) => {
 
     res.json({ items: post })
   } catch (e) {
-    console.error(e)
-  }
-}
-
-const createProfile = async (req, res) => {
-  try {
-    const data = req.body
-    const { password } = data
-
-    const hashedPassword = bcrypt.hashSync(password, 10)
-
-    await saveUser(data, hashedPassword, db)
-
-    res.json({ message: 'Profile was created successfully' })
-  } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -38,8 +22,9 @@ const deleteProfile = async (req, res) => {
 
     await deleteUser(id, db)
 
-    res.send({ message: `Profile with id ${id} have been deleted` })
+    res.send({ status: 'success', message: `Profile with id ${id} have been deleted` })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -51,15 +36,15 @@ const updateProfile = async (req, res) => {
 
     await updateUserField(id, field, newValue, db)
 
-    res.send({ message: `Field ${field} for profile ${id} have been updated` })
+    res.send({ status: 'success', message: `Field ${field} for profile ${id} have been updated` })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
 
 module.exports = {
   getProfile,
-  createProfile,
   deleteProfile,
   updateProfile
 }

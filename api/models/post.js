@@ -17,16 +17,16 @@ const getPostsByCreatorIds = async (fieldName, fieldValues, db) => {
 const createPost = async (data, db) => {
   try {
     await db('posts').insert({ ...data })
-  } catch (e) {
-    console.error({ message: '[createPost] Compare operation failed' })
+  } catch (err) {
+    console.error({ message: '[createPost] Compare operation failed', err })
   }
 }
 
 const deleteById = async (id, db) => {
   try {
     await db('posts').where('post_id', id).del()
-  } catch (e) {
-    console.error({ message: '[deleteById] Delete operation failed' })
+  } catch (err) {
+    console.error({ message: '[deleteById] Delete operation failed', err })
   }
 }
 
@@ -35,8 +35,8 @@ const updateById = async (id, fieldName, newValue, db) => {
     await db('posts')
       .where('post_id', id)
       .update({ [fieldName]: newValue })
-  } catch (e) {
-    console.error({ message: '[updateById] Update operation failed' })
+  } catch (err) {
+    console.error({ message: '[updateById] Update operation failed', err })
   }
 }
 

@@ -8,5 +8,7 @@ module.exports = {
   db_host: process.env.DB_HOST,
   db_port: process.env.DB_PORT,
   db_name: process.env.DB_NAME,
-  auth_secret: process.env.AUTH_SECRET
+  auth_secret: process.env.AUTH_SECRET,
+  smtp_user: process.env.SMTP_USER,
+  smtp_password: process.env.SMTP_PASSWORD
 }

@@ -19,7 +19,7 @@ const getUsersByIds = async (fieldValues, db) => {
 
 const getUserByEmail = async (email, db) => {
   try {
-    return await db('users').where('email', email)
+    return await db('users').where('email', email) || []
   } catch (err) {
     console.error({ message: '[getUserByEmail] Select operation failed', err })
   }
@@ -36,8 +36,8 @@ const saveUser = async (data, hashedPassword, db) => {
 const deleteUser = async (userId, db) => {
   try {
     await db('users').where('user_id', userId).del()
-  } catch (e) {
-    console.error({ message: '[deleteUser] Delete operation failed' })
+  } catch (err) {
+    console.error({ message: '[deleteUser] Delete operation failed', err })
   }
 }
 
@@ -46,8 +46,8 @@ const updateUserField = async (userId, fieldName, newValue, db) => {
     await db('users')
       .where('user_id', userId)
       .update({ [fieldName]: newValue })
-  } catch (e) {
-    console.error({ message: '[updateUserField] Update operation failed' })
+  } catch (err) {
+    console.error({ message: '[updateUserField] Update operation failed', err })
   }
 }
 

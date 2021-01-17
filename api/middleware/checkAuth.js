@@ -2,6 +2,6 @@ module.exports = (req, res, next) => {
   if (req.isAuthenticated()) {
     next()
   } else {
-    res.status(401).send({ error: 'Not authorized' })
+    res.status(401).send({ status: 'error', error: 'Not authorized' })
   }
 }

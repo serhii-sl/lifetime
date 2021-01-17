@@ -20,7 +20,6 @@ const getPendingFriendshipIdsRequests = async (userId, db) => {
 const changeFriendshipStatus = async (userId, senderId, status, db) => {
   try {
     await db('friendship').where('sender', senderId).orWhere('receiver', userId).update({ 'status': status })
-
   } catch (err) {
     console.error({ message: '[acceptFriendRequest] Update operation failed', err })
   }

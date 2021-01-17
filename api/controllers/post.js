@@ -10,8 +10,9 @@ const getOnePost = async (req, res) => {
 
     const post = await getPostsById(id, db)
 
-    res.json({ items: post })
+    res.json({ status: 'success', items: post })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -23,8 +24,9 @@ const getAllPosts = async (req, res) => {
     const ids = await getFriendIds(userId, db)
     const posts = await getPostsByCreatorIds(ids, db)
 
-    res.json({ items: posts })
+    res.json({ status: 'success', items: posts })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -35,8 +37,9 @@ const addPost = async (req, res) => {
 
     await createPost(data, db)
 
-    res.json({ message: 'Post was created successfully' })
+    res.json({ status: 'success', message: 'Post was created successfully' })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -47,8 +50,9 @@ const deletePost = async (req, res) => {
 
     await deleteById(id, db)
 
-    res.send({ message: `Post with id ${id} have been deleted` })
+    res.send({ status: 'success', message: `Post with id ${id} have been deleted` })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
@@ -60,8 +64,9 @@ const updatePost = async (req, res) => {
 
     await updateById(id, newValue, db)
 
-    res.send({ message: `Field ${field} for post ${id} have been updated` })
+    res.send({ status: 'success', message: `Field ${field} for post ${id} have been updated` })
   } catch (e) {
+    res.send({ status: 'error', error: e })
     console.error(e)
   }
 }
