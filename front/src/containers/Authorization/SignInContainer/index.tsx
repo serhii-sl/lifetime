@@ -9,9 +9,10 @@ import {
   SignInWrapper,
   FormBlock,
 } from './styles'
+import { useLogin } from './hooks/useLogin'
 
 const SignInContainer = () => {
-  const handleLogin = () => {}
+  const { handleSignIn } = useLogin()
 
   return (
     <SignInWrapper>
@@ -20,7 +21,7 @@ const SignInContainer = () => {
         <Description>Create an account and join the community</Description>
       </SidebarBlock>
       <FormBlock>
-        <LoginForm onSubmit={handleLogin} />
+        <LoginForm onSubmit={handleSignIn} />
       </FormBlock>
     </SignInWrapper>
   )

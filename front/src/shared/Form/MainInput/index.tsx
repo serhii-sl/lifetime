@@ -12,18 +12,21 @@ interface IMainInputReduxProps {
   type?: string
   validate?: ((value: any) => string | void | null)[]
   image?: string
+  input?: any
 }
 
 const renderField: React.FC<IMainInputReduxProps> = ({
   error,
   label,
   image,
-  ...inputProps
+  type,
+  input,
+  ...rest
 }) => (
   <Wrapper>
     {label && <Label>{label}</Label>}
     {image && <img src={image} alt={'input-img'} />}
-    <Input {...inputProps} />
+    <Input {...input} {...rest} type={type} />
     {error && <Error>{error}</Error>}
   </Wrapper>
 )
