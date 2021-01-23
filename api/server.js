@@ -1,29 +1,29 @@
 const express = require('express')
-const { port, endpoint } = require('./config')
+// libs
 const app = express()
+const bodyParser = require('body-parser')
+const passport = require('passport')
+// config
+const { port, endpoint } = require('./config')
 // routes
-const postsRouter = require('./routes/posts');
-const profileRouter = require('./routes/profile');
-const authRouter = require('./routes/auth');
-const errorRouter = require('./routes/error');
+const postsRoutes = require('./routes/posts');
+const profileRoutes = require('./routes/profile');
+const authRoutes = require('./routes/auth');
+const friendRoutes = require('./routes/friend');
+// db
+const db = require('./services/db')
 
-app.get('/', (req, res) => {
-    res.send('Life Time')
-})
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(passport.initialize({}))
+app.use(passport.session({}))
+require('./services/auth/passport')(passport, db)
 
-app.use(authRouter);
-app.use(postsRouter);
-app.use(profileRouter);
-app.use(errorRouter);
+app.use('/auth', authRoutes)
+app.use('/post', postsRoutes)
+app.use('/profile',  profileRoutes)
+app.use('/friends', friendRoutes)
 
 app.listen(port, () => {
-    console.log(`App listening at ${endpoint}:${port}`)
+  console.log(`App listening at ${endpoint}:${port}`)
 })
-
-app.use((error, req, res, next) => {
-    if (!error.statusCode) error.statusCode = 500;
-
-    return res
-      .status(error.statusCode)
-      .json({error: error.toString()});
-});

@@ -1,23 +1,15 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+// router
+const router = express.Router()
+// models
+const controller = require('../controllers/post')
+// middleware
+const checkAuth = require('../middleware/checkAuth')
 
-router.get('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'get', id});
-});
+router.get('/', checkAuth, controller.getAllPosts)
+router.get('/:id', checkAuth, controller.getOnePost)
+router.post('/', checkAuth, controller.addPost)
+router.put('/:id', checkAuth, controller.updatePost)
+router.delete('/:id', checkAuth, controller.deletePost)
 
-router.post('/post', async (req, res) => {
-    res.send({message: 'insert'});
-});
-
-router.put('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'update', id});
-});
-
-router.delete('/post/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'delete', id});
-});
-
-module.exports = router;
+module.exports = router

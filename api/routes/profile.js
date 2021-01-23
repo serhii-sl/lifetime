@@ -1,23 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+// router
+const router = express.Router()
+// models
+const controller = require('../controllers/user')
+// middleware
+const checkAuth = require('../middleware/checkAuth')
 
-router.get('/profile/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'get', id});
-});
+router.get('/:id', checkAuth, controller.getProfile)
+router.put('/:id', checkAuth, controller.updateProfile)
+router.delete('/:id', checkAuth, controller.deleteProfile)
 
-router.post('/profile', async (req, res) => {
-    res.send({message: 'insert'});
-});
-
-router.put('/profile/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'update', id});
-});
-
-router.delete('/profile/:id', async (req, res) => {
-    const {id} = req.params;
-    res.send({message: 'delete', id});
-});
-
-module.exports = router;
+module.exports = router

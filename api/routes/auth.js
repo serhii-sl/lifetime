@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+// router
+const router = express.Router()
+// models
+const controller = require('../controllers/auth')
 
-router.post('/auth/login', async (req, res) => {
-    res.send({message: 'login'});
-});
+router.post('/login', controller.signIn)
+router.post('/register', controller.signUp)
+router.get('/confirm/:id/:token', controller.verificationEmail)
+router.get('/resend/:id', controller.resendVerificationLink)
 
-router.post('/auth/register', async (req, res) => {
-    res.send({message: 'register'});
-});
-
-module.exports = router;
+module.exports = router

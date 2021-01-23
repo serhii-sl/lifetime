@@ -13,3 +13,7 @@ front/build
 front/npm-debug.log*
 front/yarn-debug.log*
 front/yarn-error.log*
+front/.eslintcache*
+
+api/package-lock.json*
+api/.env
