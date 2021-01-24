@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 // models
-const { getUserById, getUserByEmail, saveUser, updateUserField } = require('../models/user')
+const { usersSchema, getUserByEmail, saveUser, updateUserField } = require('../models/user')
 // config
 const { auth_secret } = require('../config')
 // db
@@ -11,6 +11,20 @@ const db = require('../services/db')
 const { sendEmailVerification, generateVerificationLink } = require('../services/auth/email')
 // utils
 const { comparePass } = require('../utils/auth')
+
+const sendVerificationLink = async (req, res, user) => {
+  const url = req.protocol + '://' + req.get('host') + '/auth'
+
+  const confirmationLink = generateVerificationLink(user.user_id, auth_secret, url)
+
+  try {
+    await sendEmailVerification(user.email, confirmationLink)
+
+    return res.send({ status: 'success', message: 'Email confirmation have been sent' })
+  } catch (err) {
+    return res.status(500).send({ status: 'error', message: 'Can\'t send confirmation email', error: err })
+  }
+}
 
 const signIn = async (req, res) => {
   try {
@@ -21,8 +35,8 @@ const signIn = async (req, res) => {
       return res.json({ status: 'error', message: 'User not found' })
     }
 
-    if (!user.email_verified) {
-      return res.send({ status: 'error', message: 'Please confirm your email' })
+    if (user && !user[usersSchema.emailVerified]) {
+      await sendVerificationLink(req, res, user)
     }
 
     const isMatchPassword = await comparePass(password, user.password)
@@ -58,17 +72,7 @@ const signUp = async (req, res) => {
 
     const [createdUser] = await getUserByEmail(data.email, db)
 
-    const url = req.protocol + '://' + req.get('host') + '/auth'
-
-    const confirmationLink = generateVerificationLink(createdUser.user_id, auth_secret, url)
-
-    try {
-      await sendEmailVerification(createdUser.email, confirmationLink)
-
-      res.send({ status: 'success', message: 'Confirmation email have been sent' })
-    } catch (err) {
-      res.status(500).send({ status: 'error', message: 'Can\'t send email confirmation', error: err })
-    }
+    await sendVerificationLink(req, res, createdUser)
   }
 }
 
@@ -78,7 +82,7 @@ const verificationEmail = async (req, res) => {
   jwt.verify(token, auth_secret, async (err, decoded) => {
     try {
       if (decoded.userId === id) {
-        await updateUserField(id, 'email_verified', true, db)
+        await updateUserField(id, usersSchema.emailVerified, true, db)
       }
 
       res.send({
@@ -93,29 +97,10 @@ const verificationEmail = async (req, res) => {
   })
 }
 
-const resendVerificationLink = async (req, res) => {
-  const { id } = req.params
-
-  const url = req.protocol + '://' + req.get('host') + '/auth'
-
-  const confirmationLink = generateVerificationLink(id, auth_secret, url)
-
-  const [user] = await getUserById(id, db)
-  try {
-    await sendEmailVerification(user.email, confirmationLink)
-
-    res.send({ status: 'success', message: 'Email confirmation have been resent' })
-  } catch (err) {
-    res.status(500).send({ status: 'error', message: 'Can\'t send confirmation email', error: err })
-  }
-}
-
-
 module.exports = {
   signIn,
   signUp,
-  verificationEmail,
-  resendVerificationLink
+  verificationEmail
 }
 
 

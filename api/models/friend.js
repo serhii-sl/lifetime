@@ -1,6 +1,16 @@
+const friendshipSchema = {
+  tableName: 'friendship',
+  status: 'status',
+  sender: 'sender',
+  receiver: 'receiver'
+}
+
 const getFriendIds = async (userId, db) => {
   try {
-    const friendships = await db('friendship').where('status', 2).andWhere('sender', userId).orWhere('receiver', userId) || []
+    const friendships = await db(friendshipSchema.tableName)
+      .where(friendshipSchema.status, 2)
+      .andWhere(friendshipSchema.sender, userId)
+      .orWhere(friendshipSchema.receiver, userId) || []
 
     return friendships.map(item => item.sender !== userId ? item.sender : item.receiver)
   } catch (err) {
@@ -10,7 +20,9 @@ const getFriendIds = async (userId, db) => {
 
 const getPendingFriendshipIdsRequests = async (userId, db) => {
   try {
-    const friendshipsPending = await db('friendship').where('status', 1).andWhere('receiver', userId) || []
+    const friendshipsPending = await db(friendshipSchema.tableName)
+      .where(friendshipSchema.status, 1)
+      .andWhere(friendshipSchema.receiver, userId) || []
     return friendshipsPending.map(item => item.sender)
   } catch (err) {
     console.error({ message: '[getPendingFriendshipIdsRequests] Select operation failed', err })
@@ -19,7 +31,9 @@ const getPendingFriendshipIdsRequests = async (userId, db) => {
 
 const changeFriendshipStatus = async (userId, senderId, status, db) => {
   try {
-    await db('friendship').where('sender', senderId).orWhere('receiver', userId).update({ 'status': status })
+    await db(friendshipSchema.tableName).where(friendshipSchema.sender, senderId)
+      .orWhere(friendshipSchema.receiver, userId)
+      .update({ [friendshipSchema.status]: status })
   } catch (err) {
     console.error({ message: '[acceptFriendRequest] Update operation failed', err })
   }

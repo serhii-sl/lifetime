@@ -1,6 +1,13 @@
+const postsSchema = {
+  tableName: 'posts',
+  postId: 'post_id',
+  creator: 'creator'
+}
+
 const getPostsById = async (id, db) => {
   try {
-    return await db('posts').where('post_id', id)
+    return await db(postsSchema.tableName)
+      .where(postsSchema.postId, id)
   } catch (err) {
     console.error({ message: '[getPostsBy] Select operation failed', err })
   }
@@ -8,7 +15,8 @@ const getPostsById = async (id, db) => {
 
 const getPostsByCreatorIds = async (fieldName, fieldValues, db) => {
   try {
-    return await db('posts').whereIn('creator', fieldValues)
+    return await db(postsSchema.tableName)
+      .whereIn(postsSchema.creator, fieldValues)
   } catch (err) {
     console.error({ message: '[getPostsByCreatorIds] Select operation failed', err })
   }
@@ -16,7 +24,8 @@ const getPostsByCreatorIds = async (fieldName, fieldValues, db) => {
 
 const createPost = async (data, db) => {
   try {
-    await db('posts').insert({ ...data })
+    await db(postsSchema.tableName)
+      .insert({ ...data })
   } catch (err) {
     console.error({ message: '[createPost] Compare operation failed', err })
   }
@@ -24,7 +33,9 @@ const createPost = async (data, db) => {
 
 const deleteById = async (id, db) => {
   try {
-    await db('posts').where('post_id', id).del()
+    await db(postsSchema.tableName)
+      .where(postsSchema.postId, id)
+      .del()
   } catch (err) {
     console.error({ message: '[deleteById] Delete operation failed', err })
   }
@@ -32,8 +43,8 @@ const deleteById = async (id, db) => {
 
 const updateById = async (id, fieldName, newValue, db) => {
   try {
-    await db('posts')
-      .where('post_id', id)
+    await db(postsSchema.tableName)
+      .where(postsSchema.postId, id)
       .update({ [fieldName]: newValue })
   } catch (err) {
     console.error({ message: '[updateById] Update operation failed', err })

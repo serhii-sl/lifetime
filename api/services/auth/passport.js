@@ -1,5 +1,5 @@
 // models
-const { getUserByEmail } = require('../../models/user')
+const { usersSchema, getUserByEmail } = require('../../models/user')
 // strategy
 const JwtStrategy = require('passport-jwt').Strategy,
   ExtractJwt = require('passport-jwt').ExtractJwt
@@ -16,7 +16,7 @@ module.exports = (passport, db) => {
       .then((items) => {
         const [user] = items
 
-        if (user && user.email_verified) {
+        if (user && user[usersSchema.emailVerified]) {
           return done(null, user)
         }
         return done(null, false)
