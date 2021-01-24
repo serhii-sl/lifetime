@@ -10,7 +10,7 @@ const getProfile = async (req, res) => {
     const dbUser = await getUserById(id, db)
 
     res.json({
-      userID: dbUser[usersSchema.userId],
+      userId: dbUser[usersSchema.userId],
       fullName: dbUser[usersSchema.fullName],
       phone: dbUser[usersSchema.phone],
       email: dbUser[usersSchema.email],
