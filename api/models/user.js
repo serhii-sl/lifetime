@@ -4,7 +4,14 @@ const { v4 } = require('uuid')
 const usersSchema = {
   tableName: 'users',
   userId: 'user_id',
+  fullName: 'full_name',
+  phone: 'phone',
   email: 'email',
+  status: 'status',
+  birthday: 'birthday',
+  educationStatus: 'education_status',
+  work: 'work',
+  university: 'university',
   emailVerified: 'email_verified'
 }
 

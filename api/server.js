@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const passport = require('passport')
+const cors = require('cors')
 // config
 const { port, endpoint } = require('./config')
 // routes
@@ -12,6 +13,8 @@ const authRoutes = require('./routes/auth');
 const friendRoutes = require('./routes/friend');
 // db
 const db = require('./services/db')
+
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

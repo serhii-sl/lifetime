@@ -1,5 +1,5 @@
 // models
-const { getUserById, deleteUser, updateUserField } = require('../models/user')
+const { usersSchema, getUserById, deleteUser, updateUserField } = require('../models/user')
 // db
 const db = require('../services/db')
 
@@ -7,9 +7,19 @@ const getProfile = async (req, res) => {
   try {
     const { id } = req.params
 
-    const post = await getUserById(id, db)
+    const dbUser = await getUserById(id, db)
 
-    res.json({ items: post })
+    res.json({
+      userID: dbUser[usersSchema.userId],
+      fullName: dbUser[usersSchema.fullName],
+      phone: dbUser[usersSchema.phone],
+      email: dbUser[usersSchema.email],
+      status: dbUser[usersSchema.status],
+      birthday: dbUser[usersSchema.birthday],
+      work: dbUser[usersSchema.work],
+      university: dbUser[usersSchema.university],
+      educationStatus: dbUser[usersSchema.educationStatus]
+    })
   } catch (e) {
     res.send({ status: 'error', error: e })
     console.error(e)
