@@ -1,32 +1,40 @@
 import API from '../../../../api/axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { setAuthData } from '../../../../store/reducers/auth'
-import { authDataSelector } from '../../../../store/reducers/auth/selectors'
+import { useDispatch } from 'react-redux'
+import { setCurrentUserData } from '../../../../store/reducers/currentUser'
 import { useHistory } from 'react-router-dom'
+import { TCurrentUserStoreData } from '../../../../store/reducers/currentUser/types';
 
 export const useLogin = () => {
   const dispatch = useDispatch()
+
   let history = useHistory()
-  const setMembers = (data: any): any =>
+
+  const setAuthToken = (token: string) =>
     dispatch(
-      setAuthData({
-        token: data.token,
-      })
+      setCurrentUserData({
+        token,
+      } as TCurrentUserStoreData)
     )
-  const t = useSelector(authDataSelector)
+
+  const setUser = (data: any) =>
+    dispatch(
+      setCurrentUserData(data)
+    )
 
   const handleSignIn = async ({ email, password }: any) => {
     const { data } = await API.post('auth/login', { email, password })
 
-    setMembers(data)
+    setAuthToken(data.token)
 
     const config = {
       headers: { Authorization: `Bearer ${data.token}` },
     }
 
-    const { data: users } = await API.get(`profile/${data.userId}`, config)
+    const { data: user } = await API.get(`profile/${data.userId}`, config)
 
+    setUser({user})
     history.push('/home')
+
   }
 
   return {

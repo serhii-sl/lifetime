@@ -1,18 +1,21 @@
+// libs
 import { combineReducers } from '@reduxjs/toolkit'
+import { createSelectorCreator, defaultMemoize } from 'reselect'
 // reducers
 import { reducer as form } from 'redux-form'
-import { createSelectorCreator, defaultMemoize } from 'reselect'
+import currentUserReducer from './currentUser'
+// constants
+import { EReduxKeys } from '../../shared/constants/redux'
+// utils
 import isEqual from 'lodash/isEqual'
-import auth from './auth'
 
 const rootReducer = combineReducers({
   form,
-  AUTH: auth as any,
+  [EReduxKeys.CURRENT_USER]: currentUserReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
 
-// create a "selector creator" that uses lodash.isEqual instead of ===
 export const createDeepEqualSelector = createSelectorCreator(
   defaultMemoize,
   isEqual
