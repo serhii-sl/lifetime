@@ -1,23 +1,25 @@
+// libs
+import { useEffect } from 'react'
 // hooks
 import { useCookies } from 'react-cookie'
-import { useAxiosAPI } from '../../../../api/axios'
 import { useHistory } from 'react-router-dom'
+import { useAxiosAPI } from '../../../../api/axios'
 // redux
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentUserData } from '../../../../store/reducers/currentUser'
 import { currentUserDataSelector } from '../../../../store/reducers/currentUser/selectors'
 // types
 import { TCurrentUserStoreData } from '../../../../store/reducers/currentUser/types'
+import { IUser } from '../../../../shared/types/user'
 
-export const useLogin = () => {
+export const useCurrentUser = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-
-  const { loading } = useSelector(currentUserDataSelector)
-
   const API = useAxiosAPI()
 
-  const [, setCookie] = useCookies(['JWT-Token'])
+  const [cookies] = useCookies(['JWT-Token'])
+
+  const { user, loading } = useSelector(currentUserDataSelector)
 
   const setAuthStatus = (status: boolean) =>
     dispatch(
@@ -33,25 +35,33 @@ export const useLogin = () => {
       } as TCurrentUserStoreData)
     )
 
-  const handleSignIn = async ({ email, password }: any) => {
+  const setUser = (data: IUser) =>
+    dispatch(setCurrentUserData({ user: data } as TCurrentUserStoreData))
+
+  const fetchCurrentUser = async () => {
     try {
       setLoading(true)
-      const { data } = await API.post('auth/login', { email, password })
+      const { data: user } = await API.get(`profile/${cookies.userId}`)
 
-      data.token && setAuthStatus(true)
-      setCookie('JWT-Token', data.token)
-      setCookie('userId', data.userId)
+      cookies['JWT-Token'] && setAuthStatus(true)
+      setUser(user)
 
       history.push('/home')
     } catch (error) {
-      console.log('[handleSignIn]: ', error)
+      console.log('[fetchCurrentUser]: ', error)
     } finally {
       setLoading(false)
     }
   }
 
+  useEffect(() => {
+    if (!user) {
+      fetchCurrentUser()
+    }
+  }, [])
+
   return {
-    handleSignIn,
-    loading,
+    fetchCurrentUser,
+    loading
   }
 }

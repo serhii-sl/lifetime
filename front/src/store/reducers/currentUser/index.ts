@@ -8,7 +8,7 @@ import { TCurrentUserStoreData } from './types'
 
 const initialState: TCurrentUserStoreData = {
   user: null,
-  token: '',
+  isAuth: false,
   loading: true,
 }
 

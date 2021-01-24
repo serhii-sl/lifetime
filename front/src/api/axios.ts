@@ -1,9 +1,12 @@
 import axios from 'axios'
+// cookies
+import { useCookies } from 'react-cookie'
 
-const config = {
-  headers: { Authorization: `Bearer` },
+export const useAxiosAPI = () => {
+  const [cookies] = useCookies(['JWT-Token'])
+
+  return axios.create({
+    baseURL: `http://localhost:3000/`,
+    headers: { Authorization: `Bearer ${cookies['JWT-Token']}` },
+  })
 }
-
-export default axios.create({
-  baseURL: `http://localhost:3000/`,
-})

@@ -1,6 +1,7 @@
 import * as React from 'react'
 // components
 import LoginForm from '../../../components/SignIn/LoginForm'
+import Loader from '../../../components/Loader'
 // styles
 import {
   Description,
@@ -12,18 +13,25 @@ import {
 import { useLogin } from './hooks/useLogin'
 
 const SignInContainer = () => {
-  const { handleSignIn } = useLogin()
+  const { handleSignIn, loading } = useLogin()
 
   return (
-    <SignInWrapper>
-      <SidebarBlock>
-        <HeaderText>Adventure starts here</HeaderText>
-        <Description>Create an account and join the community</Description>
-      </SidebarBlock>
-      <FormBlock>
-        <LoginForm onSubmit={handleSignIn} />
-      </FormBlock>
-    </SignInWrapper>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <SignInWrapper>
+          <SidebarBlock>
+            <HeaderText>Adventure starts here</HeaderText>
+            <Description>Create an account and join the community</Description>
+          </SidebarBlock>
+          <FormBlock>
+            <LoginForm onSubmit={handleSignIn} />
+          </FormBlock>
+        </SignInWrapper>
+      )}
+      )
+    </>
   )
 }
 
